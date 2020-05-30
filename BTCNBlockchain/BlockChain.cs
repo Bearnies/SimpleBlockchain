@@ -34,5 +34,27 @@ namespace BTCNBlockchain
             block.hash = block.CalculateHash();
             blockChain.Add(block);
         }
+
+        public bool IsBlockValid()
+        {
+            for (int i = 1; i < blockChain.Count; i++)
+            {
+                Block currentBlock = blockChain[i];
+                Block previousBlock = blockChain[i - 1];
+
+                if (currentBlock.hash != currentBlock.CalculateHash())
+                {
+                    return false;
+                }
+
+                if (currentBlock.previousHash != previousBlock.hash)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        
+
     }
 }

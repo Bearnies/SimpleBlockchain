@@ -12,6 +12,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using NBitcoin;
+using NBitcoin.RPC;
+using QBitNinja.Client;
+using QBitNinja.Client.Models;
+using HBitcoin;
 
 namespace BTCNBlockchain
 {
@@ -23,6 +28,22 @@ namespace BTCNBlockchain
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        public void createWallet()
+        {
+            //-----Tạo địa chỉ cho Wallet
+            NBitcoin.Key privateKey = new NBitcoin.Key();
+            PubKey publicKey = privateKey.PubKey;
+            BitcoinAddress bitcoinAddress = publicKey.GetAddress(ScriptPubKeyType.Legacy, Network.Main); //Địa chỉ
+            BitcoinSecret bitcoinPrivateKey = privateKey.GetWif(Network.Main); //Bitcoin Private key, GetWif = Wallet Import Format
+            Money moneyAmount = Money.Zero; //Khởi tạo balance = 0
+            //---------------------------
+        }
+
+        private void createUserWallet_Click(object sender, RoutedEventArgs e)
+        {
+            createWallet();
         }
     }
 }

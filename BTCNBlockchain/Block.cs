@@ -27,11 +27,13 @@ namespace BTCNBlockchain
         public string CalculateHash()
         {
             SHA256 sha256 = SHA256.Create();
-
+            //return CryptoJS.SHA256(blockIndex + previousHash + timeStamp + data).toString();
+            
             byte[] inputBytes = Encoding.ASCII.GetBytes($"{timeStamp} - {previousHash ?? ""}-{data}"); //Dựa vào timeStamp và kiểm tra xem có previousHash không để tạo inputcode cho Block
             byte[] outputBytes = sha256.ComputeHash(inputBytes); //Tính toán giá trị hash cho byte array inputcode
 
             return Convert.ToBase64String(outputBytes); //Chuyển giá trị hash thành string 64-digit và return giá trị hash
+            
         }
     }
 }

@@ -13,10 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using NBitcoin;
-using NBitcoin.RPC;
-using QBitNinja.Client;
-using QBitNinja.Client.Models;
-using HBitcoin;
+
 
 namespace BTCNBlockchain
 {
@@ -37,13 +34,23 @@ namespace BTCNBlockchain
             PubKey publicKey = privateKey.PubKey;
             BitcoinAddress bitcoinAddress = publicKey.GetAddress(ScriptPubKeyType.Legacy, Network.Main); //Địa chỉ
             BitcoinSecret bitcoinPrivateKey = privateKey.GetWif(Network.Main); //Bitcoin Private key, GetWif = Wallet Import Format
-            Money moneyAmount = Money.Zero; //Khởi tạo balance = 0
+            var transactionId = Coin.ByteArrayToString(Coin.StringToSha256(publicKey.ToString())); //Tạo Transaction ID cho các transaction sau này
+            var givenCoins = new Money(1, MoneyUnit.BTC);
             //---------------------------
+
+            txbAddress.Text = bitcoinAddress.ToString();
+            txbPrivateKey.Text = bitcoinPrivateKey.ToString();
+            amountOfCoin.Text = givenCoins.ToString();
         }
 
         private void createUserWallet_Click(object sender, RoutedEventArgs e)
         {
             createWallet();
+        }
+
+        private void makeTransaction_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

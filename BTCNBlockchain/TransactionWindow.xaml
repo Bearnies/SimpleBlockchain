@@ -1,0 +1,49 @@
+﻿<Window x:Class="BTCNBlockchain.TransactionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BTCNBlockchain"
+        mc:Ignorable="d"
+        Title="TransactionWindow" Height="450" Width="800">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Giao dịch gửi xu">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="25*"/>
+                        <ColumnDefinition Width="106*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Name="txbAddressSender" HorizontalAlignment="Left" Height="30" Margin="14.611,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="578" Grid.Column="1"/>
+                    <TextBox Name="txbPrivateKeySender" HorizontalAlignment="Left" Height="30" Margin="14.611,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="578" Grid.Column="1"/>
+                    <TextBox Name="txbAddressRecipent" HorizontalAlignment="Left" Height="30" Margin="14.611,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="578" Grid.Column="1"/>
+                    <TextBox Name="txbAmountOfCoinSend" HorizontalAlignment="Left" Height="30" Margin="14.611,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="578" Grid.Column="1"/>
+                    <TextBox Name="txbMessage" HorizontalAlignment="Left" Height="30" Margin="14.611,231,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="578" Grid.Column="1"/>
+                    <TextBox Name="txbSign" HorizontalAlignment="Left" Height="30" Margin="14.611,286,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="578" Grid.Column="1"/>
+
+                    <TextBlock HorizontalAlignment="Left" Margin="48,32,0,0" TextWrapping="Wrap" Text="Địa chỉ nguời gửi:" VerticalAlignment="Top" Width="97"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="20,86,0,0" TextWrapping="Wrap" Text="Khóa bí mật nguời gửi:" VerticalAlignment="Top" Width="125"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="36,134,0,0" TextWrapping="Wrap" Text="Địa chỉ người nhận:" VerticalAlignment="Top" Width="109"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="84,185,0,0" TextWrapping="Wrap" Text="Số xu gửi:" VerticalAlignment="Top" Width="55"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="20,238,0,0" TextWrapping="Wrap" Text="Tin nhắn từ người gửi:" VerticalAlignment="Top" Width="124"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="97,292,0,0" TextWrapping="Wrap" Text="Chữ ký:" VerticalAlignment="Top" Width="46"/>
+                    <Button Name="generateSignature" Content="Khởi tạo chữ ký" HorizontalAlignment="Left" Margin="67,333,0,0" VerticalAlignment="Top" Width="156" Height="32" Click="generateSignature_Click" Grid.Column="1"/>
+                    <Button Name="confirmSendCoin" Content="Xác nhận gửi" HorizontalAlignment="Left" Margin="307,333,0,0" VerticalAlignment="Top" Width="156" Height="32" Click="confirmSendCoin_Click" Grid.Column="1"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Lịch sử giao dịch">
+                <Grid>
+                    <DataGrid Name="transactionDataGrid">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Địa chỉ người gửi" Binding="{Binding Path=sender}" IsReadOnly="True" Width="50"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Địa chỉ người nhận" Binding="{Binding Path=recipient}" IsReadOnly="True" Width="130"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Số xu" Binding="{Binding Path=coin}" IsReadOnly="True" Width="130"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Ngày giao dịch" Binding="{Binding Path=date}" IsReadOnly="True" Width="130"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        
+    </Grid>
+</Window>

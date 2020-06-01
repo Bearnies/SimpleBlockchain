@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BTCNBlockchain"
         mc:Ignorable="d"
-        Title="MainWindow" Height="341" Width="800">
+        Title="MainWindow" Height="316" Width="800">
     <Grid>
 
         <Button Name="createUserWallet" Content="Tạo ví tiền" HorizontalAlignment="Left" Margin="347,152,0,0" VerticalAlignment="Top" Width="120" Click="createUserWallet_Click" Height="35"/>
@@ -15,6 +15,6 @@
         <TextBlock HorizontalAlignment="Left" Margin="52,34,0,0" TextWrapping="Wrap" Text="Địa chỉ:" VerticalAlignment="Top" Width="55"/>
         <TextBlock HorizontalAlignment="Left" Margin="26,78,0,0" TextWrapping="Wrap" Text="Khóa bí mật:" VerticalAlignment="Top" Width="81"/>
         <TextBlock HorizontalAlignment="Left" Margin="60,118,0,0" TextWrapping="Wrap" Text="Số xu:" VerticalAlignment="Top" Width="35"/>
-        <TextBlock Name="amountOfCoin" HorizontalAlignment="Left" Margin="110,118,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="35"/>
+        <TextBlock Name="amountOfCoin" HorizontalAlignment="Left" Margin="110,118,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="200"/>
     </Grid>
 </Window>

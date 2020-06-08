@@ -18,7 +18,7 @@ namespace BTCNBlockchain
 
         public Block CreateBlock()
         {
-            return new Block(null, "{}",DateTime.Now); //Block có thể trống
+            return new Block(null, "{}",DateTime.Now, 0); //Block có thể trống
         }
 
         public Block GetLatestBlock() //Tìm block mới nhất
@@ -29,9 +29,17 @@ namespace BTCNBlockchain
         public void AddBlockToBlockChain(Block block)
         {
             Block latestBlock = GetLatestBlock();
-            block.blockIndex = latestBlock.blockIndex + 1;
-            block.previousHash = latestBlock.hash;
-            block.hash = block.CalculateHash();
+            block.BlockIndex = latestBlock.BlockIndex + 1;
+            block.PreviousHash = latestBlock.Hash;
+            block.Hash = block.CalculateHash();
+            block.TimeStamp = DateTime.Now;
+            block.Nonce = 0;
+            while (!IsBlockValid())
+            {
+                block.Nonce = block.Nonce + 1;
+                block.TimeStamp = DateTime.Now;
+                block.Hash = block.CalculateHash();
+            }
             blockChain.Add(block);
         }
 
@@ -42,19 +50,17 @@ namespace BTCNBlockchain
                 Block currentBlock = blockChain[i];
                 Block previousBlock = blockChain[i - 1];
 
-                if (currentBlock.hash != currentBlock.CalculateHash())
+                if (currentBlock.Hash != currentBlock.CalculateHash())
                 {
                     return false;
                 }
 
-                if (currentBlock.previousHash != previousBlock.hash)
+                if (currentBlock.PreviousHash != previousBlock.Hash)
                 {
                     return false;
                 }
             }
             return true;
         }
-        
-
     }
 }

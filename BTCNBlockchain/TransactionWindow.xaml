@@ -38,6 +38,7 @@
                             <DataGridTextColumn Header="Địa chỉ người gửi" Binding="{Binding Path=sender}" IsReadOnly="True" Width="50"></DataGridTextColumn>
                             <DataGridTextColumn Header="Địa chỉ người nhận" Binding="{Binding Path=recipient}" IsReadOnly="True" Width="130"></DataGridTextColumn>
                             <DataGridTextColumn Header="Số xu" Binding="{Binding Path=coin}" IsReadOnly="True" Width="130"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Data" Binding="{Binding Path=data}" IsReadOnly="True" Width="130"></DataGridTextColumn>
                             <DataGridTextColumn Header="Ngày giao dịch" Binding="{Binding Path=date}" IsReadOnly="True" Width="130"></DataGridTextColumn>
                         </DataGrid.Columns>
                     </DataGrid>

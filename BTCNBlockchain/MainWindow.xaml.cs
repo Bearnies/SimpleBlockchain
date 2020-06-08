@@ -14,7 +14,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Base58Check;
-using NBitcoin;
 using Secp256k1Net;
 
 namespace BTCNBlockchain
